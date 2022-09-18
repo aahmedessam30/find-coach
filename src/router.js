@@ -1,12 +1,26 @@
+import { defineAsyncComponent } from "vue";
 import { createRouter, createWebHistory } from "vue-router";
-import UserAuth from "./views/auth/UserAuth.vue";
-import CoachesList from "./views/coaches/CoachesList.vue";
-import CoachDetail from "./views/coaches/CoachDetail.vue";
-import CoachRegistration from "./views/coaches/CoachRegistration.vue";
-import ContactCoach from "./views/requests/ContactCoach.vue";
-import RequestReceived from "./views/requests/RequestReceived.vue";
-import NotFound from "./views/NotFound.vue";
 import store from "./store/index.js";
+
+const CoachDetail = defineAsyncComponent(() =>
+  import("./views/coaches/CoachDetail.vue")
+);
+const CoachRegistration = defineAsyncComponent(() =>
+  import("./views/coaches/CoachRegistration.vue")
+);
+const UserAuth = defineAsyncComponent(() =>
+  import("./views/auth/UserAuth.vue")
+);
+const CoachesList = defineAsyncComponent(() =>
+  import("./views/coaches/CoachesList.vue")
+);
+const ContactCoach = defineAsyncComponent(() =>
+  import("./views/requests/ContactCoach.vue")
+);
+const RequestReceived = defineAsyncComponent(() =>
+  import("./views/requests/RequestReceived.vue")
+);
+const NotFound = defineAsyncComponent(() => import("./views/NotFound.vue"));
 
 const routes = [
   { path: "/", redirect: "/coaches" },
@@ -45,5 +59,5 @@ router.beforeEach(function (to, _, next) {
     next();
   }
 });
-    
+
 export default router;
